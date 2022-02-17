@@ -1,18 +1,19 @@
+import { BrowserRouter as Router, Switch, Route, Redirect,} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './Login';
 import Dashboard from './Dashboard';
+import PlayingNow from './PlayingNow';
 const code = new URLSearchParams(window.location.search).get("code")
 
+
 function App() {
-    
-    return (
-        console.log('xxxx'),
-    
+    return ( 
             <div>
             {code ? (
                 <Dashboard 
                 code={code} /> ):( <Login/> )}
             </div>
+            
         )
 }
 
