@@ -23,14 +23,17 @@ export default function Dashboard({ code }) {
       console.log(playlists.body);
     });
   }, [accessToken]);
-  function timer() {
-    if (!accessToken) return;
-    spotifyApi.getMyCurrentPlayingTrack("bman279").then((track) => {
-      console.log(track.body.item.album.images[0].url);
-      setUserTrack(track.body.item.album.images[0].url);
-    });
-  }
-  setInterval(timer, 3000);
+
+  // function timer() {
+  //   if (!accessToken) return;
+  //   spotifyApi.getMyCurrentPlayingTrack("bman279").then((track) => {
+  //     if(!track) return
+  //     //console.log(track.body.item.album.images[0].url);
+  //     setUserTrack(track.body.item.album.images[0].url);
+  //     return;
+  //   });
+  //}
+  //setInterval(timer, 5000);
 
   function chooseTrack(track) {
     setPlayingTrack(track);
@@ -87,14 +90,13 @@ export default function Dashboard({ code }) {
             />
           ))}
         </div>
-        {/* <div>
-        <PlayingNow accessToken={accessToken} />
-      </div> */}
+        <div>
+          <PlayingNow accessToken={accessToken} />
+        </div>
         <div>
           <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
         </div>
       </Container>
-      <PlayingNow accessToken={accessToken} trackURL={userTrack} />
     </div>
   );
 }
