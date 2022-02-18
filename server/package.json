@@ -16,7 +16,8 @@
         "dotenv": "^16.0.0",
         "express": "^4.17.2",
         "react-native-dotenv": "^3.3.1",
-        "spotify-web-api-node": "^5.0.2"
+        "spotify-web-api-node": "^5.0.2",
+        "yarn": "^1.22.17"
     },
     "devDependencies": {
         "nodemon": "^2.0.15"

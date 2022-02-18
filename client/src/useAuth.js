@@ -5,7 +5,6 @@ export default function useAuth(code) {
     const [accessToken, setAccessToken] = useState()
     const [refreshToken, setRefreshToken] = useState()
     const [expiresIn, setExpiresIn] = useState()
-    console.log(code)
 
     useEffect(() => {
 
@@ -38,7 +37,7 @@ export default function useAuth(code) {
                 .catch(() => {
                     window.location = '/'
                 })
-        }, (expiresIn - 60) * 1000)
+        }, (expiresIn - 30) * 1000)
         return () => clearInterval(interval)
     }, [refreshToken, expiresIn])
 

@@ -23,8 +23,8 @@ app.post("/refresh", (req, res) => {
         .refreshAccessToken()
         .then(data => {
             res.json({
-                    accessToken: data.body.accessToken,
-                    expiresIn: data.body.expiresIn,
+                    accessToken: data.body.access_token,
+                    expiresIn: data.body.expires_in,
                 })
                 //console.log(data.body)
         })
@@ -46,7 +46,7 @@ app.post('/login', (req, res) => {
             res.json({
                 accessToken: data.body.access_token,
                 refreshToken: data.body.refresh_token,
-                expiresin: data.body.expires_in,
+                expiresIn: data.body.expires_in,
             })
         })
         .catch(err => {

@@ -1,19 +1,27 @@
-//import { BrowserRouter as Router, Switch, Route, Redirect,} from "react-router-dom";
+import './App.css';
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
-import PlayingNow from "./PlayingNow";
+import Header from "./components/Header";
+import Home from "./components/Home";
 const code = new URLSearchParams(window.location.search).get("code");
 
 function App() {
   console.log("test");
   return (
-    <div>
-      {/* <div>
-             <PlayingNow code={code}/>
-             </div> */}
+
+          <div className= "App">
+            <div>
       {code ? <Dashboard code={code} /> : <Login />}
-    </div>
+     </div>
+            <Header/>
+            <Home/>
+             
+          </div>
+    // <div>
+    //   {code ? <Dashboard code={code} /> : <Login />}
+    // </div>
   );
 }
 

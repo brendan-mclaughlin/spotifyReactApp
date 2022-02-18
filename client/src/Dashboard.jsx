@@ -71,6 +71,8 @@ export default function Dashboard({ code }) {
   return (
     //console.log(getBack()),
     <div>
+          <PlayingNow accessToken={accessToken} />
+    <div>
       <Container
         className="d-flex flex-column py-2"
         style={{ height: "100vh" }}
@@ -90,13 +92,13 @@ export default function Dashboard({ code }) {
             />
           ))}
         </div>
-        <div>
-          <PlayingNow accessToken={accessToken} />
-        </div>
+        
         <div>
           <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
         </div>
       </Container>
     </div>
+    </div>
+
   );
 }
