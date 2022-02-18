@@ -5,7 +5,7 @@ export default function useAuth(code) {
     const [accessToken, setAccessToken] = useState()
     const [refreshToken, setRefreshToken] = useState()
     const [expiresIn, setExpiresIn] = useState()
-
+    console.log(code)
 
     useEffect(() => {
 
@@ -21,7 +21,7 @@ export default function useAuth(code) {
             .catch(() => {
                 window.location = '/'
             })
-
+        console.log(expiresIn)
     }, [code])
 
     useEffect(() => {
