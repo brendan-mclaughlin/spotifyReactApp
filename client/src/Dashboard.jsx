@@ -3,7 +3,8 @@ import useAuth from "./useAuth";
 import TrackSearchResult from "./TrackSearchResult";
 import { Container, Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
-
+import Player from "./Player";
+import PlayingNow from "./PlayingNow";
 const spotifyApi = new SpotifyWebApi({
   clientId: "2b7833ae90d54a59be5a2b0e1b77a0c4",
 });
@@ -12,24 +13,32 @@ export default function Dashboard({ code }) {
   const accessToken = useAuth(code);
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [playingTrack, setPlayingTrack] = useState();
+  const [userTrack, setUserTrack] = useState();
 
   useEffect(() => {
     if (!accessToken) return;
     spotifyApi.setAccessToken(accessToken);
-    spotifyApi.getUserPlaylists('bman279').then((playlists) => {
-          console.log(playlists.body);
-    });
     spotifyApi.getMySavedTracks(50, 0).then((playlists) => {
       console.log(playlists.body);
-});
+    });
   }, [accessToken]);
 
-//   let getBack = () => {
-//     spotifyApi.getMyCurrentPlayingTrack().then((track) => {
-//       console.log(track.body.item.album.images[0].url);
-//       return track.body.item.album.images[0].url;
-//     });
-//   };
+  // function timer() {
+  //   if (!accessToken) return;
+  //   spotifyApi.getMyCurrentPlayingTrack("bman279").then((track) => {
+  //     if(!track) return
+  //     //console.log(track.body.item.album.images[0].url);
+  //     setUserTrack(track.body.item.album.images[0].url);
+  //     return;
+  //   });
+  //}
+  //setInterval(timer, 5000);
+
+  function chooseTrack(track) {
+    setPlayingTrack(track);
+    setSearch("");
+  }
 
   useEffect(() => {
     if (!search) return setSearchResults([]);
@@ -61,10 +70,10 @@ export default function Dashboard({ code }) {
 
   return (
     //console.log(getBack()),
-    (
+    <div>
       <Container
         className="d-flex flex-column py-2"
-        style={{ height: "100vh"}}
+        style={{ height: "100vh" }}
       >
         <Form.Control
           type="search"
@@ -74,11 +83,20 @@ export default function Dashboard({ code }) {
         />
         <div className="flex-grow-1 my-2" style={{ overflowY: "auto" }}>
           {searchResults.map((track) => (
-            <TrackSearchResult track={track} key={track.uri} />
+            <TrackSearchResult
+              track={track}
+              key={track.uri}
+              chooseTrack={chooseTrack}
+            />
           ))}
         </div>
-        <div>Bottom</div>
+        <div>
+          <PlayingNow accessToken={accessToken} />
+        </div>
+        <div>
+          <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
+        </div>
       </Container>
-    )
+    </div>
   );
 }
