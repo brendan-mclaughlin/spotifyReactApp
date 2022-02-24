@@ -24,17 +24,6 @@ export default function Dashboard({ code }) {
     });
   }, [accessToken]);
 
-  // function timer() {
-  //   if (!accessToken) return;
-  //   spotifyApi.getMyCurrentPlayingTrack("bman279").then((track) => {
-  //     if(!track) return
-  //     //console.log(track.body.item.album.images[0].url);
-  //     setUserTrack(track.body.item.album.images[0].url);
-  //     return;
-  //   });
-  //}
-  //setInterval(timer, 5000);
-
   function chooseTrack(track) {
     setPlayingTrack(track);
     setSearch("");
