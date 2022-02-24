@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
 import Header from "./components/Header";
-import Home from "./components/Home";
+import Home from "./components/home";
 const code = new URLSearchParams(window.location.search).get("code");
 
 function App() {

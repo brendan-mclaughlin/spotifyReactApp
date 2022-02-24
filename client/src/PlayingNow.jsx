@@ -3,6 +3,7 @@ import SpotifyWebApi from "spotify-web-api-node";
 import useAuth from "./useAuth";
 import styled from 'styled-components';
 
+
 const spotifyApi = new SpotifyWebApi({
   clientId: "2b7833ae90d54a59be5a2b0e1b77a0c4",
 });
@@ -42,7 +43,8 @@ export default function PlayingNow({ accessToken }) {
   return (
     <div>
     <Image src={`${userTrackURL}`}style={{ height: "500px", width: "500px" }} />
-    <h1>Current Song: {userTrack} by {userArtist}</h1>
+    <text style={{fontSize: 30}}>Current Song: {userTrack}~{"\n"}
+     by {userArtist}</text>
      </div>
 
   );
