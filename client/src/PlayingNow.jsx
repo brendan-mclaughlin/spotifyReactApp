@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import SpotifyWebApi from "spotify-web-api-node";
 import useAuth from "./useAuth";
-//import styled from "styled-components";
 const spotifyApi = new SpotifyWebApi({
   clientId: "2b7833ae90d54a59be5a2b0e1b77a0c4",
 });
@@ -9,11 +8,7 @@ let testImage =
   "https://i.scdn.co/image/ab67616d0000b273251208dd8a171216f45d47e8";
   function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
   var styled = _interopDefault(require('styled-components'));
-  
   var keyframes = require('styled-components').keyframes;
-
-
-
 
 export default function PlayingNow({ accessToken }) {
   const [userTrackURL, setUserTrackURL] = useState();
@@ -53,21 +48,20 @@ export default function PlayingNow({ accessToken }) {
         console.log(data.body.items)
         for(let i=0; i < arr.length; i++) {
           var temp ={}
-          // jsonData.title.push( arr[i].track.name)
-          // jsonData.artist.push( arr[i].track.name)
           temp['title'] = arr[i].track.name
           temp['artist'] = arr[i].track.artists[0].name
           jsonData[i] = temp;
-          // jsonData.title = arr[i].track.name
-          // jsonData.artist = arr[i].track.artists[0].name
           console.log(arr[i].track.name)
         }
-        console.log(jsonData)
+        setLikedSongs(jsonData)
+       console.log(jsonData)
       },
       function (err) {
         console.log("Something went wrong!", err);
       }
-    );
+    
+  
+);
     return () => clearInterval(interval);
   }, [accessToken]);
 
@@ -81,13 +75,10 @@ export default function PlayingNow({ accessToken }) {
         Current Song: {userTrack}{"\n"}
         by {userArtist}
       </Text>
+      
     </div>
   );
 }
-// </Wrapper>
-//   <div layout="d-flex m-2 align-items-right">
-//     <img src={userTrack} style={{ height: "500px", width: "500px" }} />
-//   </div>
 const Wrapper = styled.div`
   width: 32%;
   border: 2px solid #333;
@@ -108,6 +99,7 @@ const rotate = keyframes`
 const Image = styled.img`
   width: 46%;
   float: left;
+  margin-right: 10px;
   margin-right: 10px;
   animation: ${rotate} 15s linear infinite;
 `;

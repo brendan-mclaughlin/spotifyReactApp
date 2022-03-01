@@ -5,6 +5,7 @@ import { Container, Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
 import Player from "./Player";
 import PlayingNow from "./PlayingNow";
+import LikedSongs from "./LikedSongs";
 const spotifyApi = new SpotifyWebApi({
   clientId: "2b7833ae90d54a59be5a2b0e1b77a0c4",
 });
@@ -54,17 +55,22 @@ export default function Dashboard({ code }) {
         })
       );
     });
+    //console.log(searchResults)
+
     return () => (cancel = true);
   }, [search, accessToken]);
 
   return (
     //console.log(getBack()),
+    
     <div>
           <PlayingNow accessToken={accessToken} />
-    <div>
+          <LikedSongs accessToken={accessToken} />
+    {/* <div>
+      
       <Container
         className="d-flex flex-column py-2"
-        style={{ height: "100vh" }}
+        style={{width: "50vh", height: "100vh" }}
       >
         <Form.Control
           type="search"
@@ -80,13 +86,11 @@ export default function Dashboard({ code }) {
               chooseTrack={chooseTrack}
             />
           ))}
-        </div>
+        </div> */}
         
         <div>
           <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
-        </div>
-      </Container>
-    </div>
+        </div>      
     </div>
 
   );
