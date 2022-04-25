@@ -11,3 +11,5 @@ Current playing song cover automatically updating(DONE).
 Rotating current albumn cover(DONE)
   -Common issue with styled components rotating fixed https://github.com/styled-components/babel-plugin-styled-components/issues/216
 Sorting liked songs library based on genres(Spotify beat me to it). 
+
+*Exposed secrects in commits are outdated :)
