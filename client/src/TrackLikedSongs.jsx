@@ -11,7 +11,7 @@ export default function TrackSearchResult({track}) {
             // onClick={handlePlay}
             >
             <img src={track.albumUrl} style={{height: '120px', width: '120px'}}/>
-     <div className ="ml-3">
+     <div className ="text-center mx-3">
        <div>{track.title}</div>
        <div className="text-muted">{track.artist}</div>
        </div>

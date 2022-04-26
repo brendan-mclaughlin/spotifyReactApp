@@ -69,7 +69,7 @@ export default function PlayingNow({ accessToken }) {
     <div>
       <Image
         src={`${userTrackURL}`}
-        style={{ height: "500px", width: "500px" }}
+        //style={{ height: "500px", width: "500px", borderRadius: "50%" }}
       />
       <Text>
         Current Song: {userTrack}{"\n"}
@@ -97,10 +97,11 @@ const rotate = keyframes`
   }
 `;
 const Image = styled.img`
-  width: 46%;
+  border-radius: 50%;
+  height: 600px;
+  width: 600px;
   float: left;
-  margin-right: 10px;
-  margin-right: 10px;
+  margin-right: 15px;
   animation: ${rotate} 15s linear infinite;
 `;
 const Text = styled.h1`

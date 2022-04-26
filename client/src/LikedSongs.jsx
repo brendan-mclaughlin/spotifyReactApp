@@ -48,15 +48,14 @@ console.log("Something went wrong!", err);
     <div>
       <Container
           className = "d-flex flex-column py-0"
-          style={{width: "50vh", height: "100vh" }}
+          style={{width: "100vh", height: "100vh" }}
           >
-            <div className="flex-grow-1 my-2 mx-5" style={{ overflowY: "auto" }}>
+            <div className="flex-grow-1 my-2 mx-6" style={{ overflowY: "auto" }}>
              {myLikedSongs.map((track) => (
               <TrackLikedSongs
                 track={track}
                 key={track.artist}
-                //chooseTrack={chooseTrack}
-              />
+                              />
             ))} 
           </div>
           </Container>
